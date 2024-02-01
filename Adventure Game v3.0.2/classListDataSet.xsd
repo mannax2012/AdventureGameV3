@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="classListDataSet" targetNamespace="http://tempuri.org/classListDataSet.xsd" xmlns:mstns="http://tempuri.org/classListDataSet.xsd" xmlns="http://tempuri.org/classListDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="classListConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="classListConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Adventure_Game.Properties.Settings.GlobalReference.Default.classListConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="classListDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="classListDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="classListDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="myDataTable" msprop:Generator_RowEvHandlerName="myDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="myDataTableRowDeleted" msprop:Generator_RowDeletingName="myDataTableRowDeleting" msprop:Generator_RowEvArgName="myDataTableRowChangeEvent" msprop:Generator_TablePropName="myDataTable" msprop:Generator_RowChangedName="myDataTableRowChanged" msprop:Generator_RowChangingName="myDataTableRowChanging" msprop:Generator_TableClassName="myDataTableDataTable" msprop:Generator_RowClassName="myDataTableRow" msprop:Generator_TableVarName="tablemyDataTable" msprop:Generator_UserTableName="myDataTable">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="playerSaveData" msprop:Generator_RowEvHandlerName="playerSaveDataRowChangeEventHandler" msprop:Generator_RowDeletedName="playerSaveDataRowDeleted" msprop:Generator_RowDeletingName="playerSaveDataRowDeleting" msprop:Generator_RowEvArgName="playerSaveDataRowChangeEvent" msprop:Generator_TablePropName="playerSaveData" msprop:Generator_RowChangedName="playerSaveDataRowChanged" msprop:Generator_RowChangingName="playerSaveDataRowChanging" msprop:Generator_TableClassName="playerSaveDataDataTable" msprop:Generator_RowClassName="playerSaveDataRow" msprop:Generator_TableVarName="tableplayerSaveData" msprop:Generator_UserTableName="playerSaveData">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

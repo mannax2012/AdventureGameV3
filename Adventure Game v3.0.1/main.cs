@@ -14,7 +14,7 @@ namespace Adventure_Game_v3._0._1
     {
         public main()
         {
-            InitializeComponent();
+  
         }
 
         private void Form1_Load(object sender, EventArgs e)
