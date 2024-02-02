@@ -63,11 +63,11 @@
             this.labelDisplayDex = new System.Windows.Forms.Label();
             this.labelDisplayStam = new System.Windows.Forms.Label();
             this.labelTotalSkillPoints = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ADDSTR = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.REMOVE = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.classNameDisplay = new System.Windows.Forms.Label();
             this.characterNameTextBox = new System.Windows.Forms.TextBox();
@@ -379,14 +379,14 @@
             this.labelTotalSkillPoints.TabIndex = 36;
             this.labelTotalSkillPoints.Text = "100";
             // 
-            // button1
+            // ADDSTR
             // 
-            this.button1.Location = new System.Drawing.Point(126, 102);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 23);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ADDSTR.Location = new System.Drawing.Point(126, 102);
+            this.ADDSTR.Name = "ADDSTR";
+            this.ADDSTR.Size = new System.Drawing.Size(24, 23);
+            this.ADDSTR.TabIndex = 37;
+            this.ADDSTR.Text = "+";
+            this.ADDSTR.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -415,14 +415,14 @@
             this.button4.Text = "+";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // REMOVE
             // 
-            this.button5.Location = new System.Drawing.Point(110, 201);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(50, 23);
-            this.button5.TabIndex = 41;
-            this.button5.Text = "Reset";
-            this.button5.UseVisualStyleBackColor = true;
+            this.REMOVE.Location = new System.Drawing.Point(110, 201);
+            this.REMOVE.Name = "REMOVE";
+            this.REMOVE.Size = new System.Drawing.Size(50, 23);
+            this.REMOVE.TabIndex = 41;
+            this.REMOVE.Text = "Reset";
+            this.REMOVE.UseVisualStyleBackColor = true;
             // 
             // label18
             // 
@@ -477,11 +477,11 @@
             this.Controls.Add(this.characterNameTextBox);
             this.Controls.Add(this.classNameDisplay);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.REMOVE);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ADDSTR);
             this.Controls.Add(this.labelTotalSkillPoints);
             this.Controls.Add(this.labelDisplayStam);
             this.Controls.Add(this.labelDisplayDex);
@@ -563,11 +563,11 @@
         private System.Windows.Forms.Label labelDisplayDex;
         private System.Windows.Forms.Label labelDisplayStam;
         private System.Windows.Forms.Label labelTotalSkillPoints;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ADDSTR;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button REMOVE;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label classNameDisplay;
         private System.Windows.Forms.TextBox characterNameTextBox;

@@ -15,6 +15,7 @@ namespace DatabaseLearning
     public partial class Form2 : Form
     {
         private List<gameSaveData> playerSaveData;
+        
         public Form2()
         {
             InitializeComponent();
@@ -121,17 +122,26 @@ namespace DatabaseLearning
                     labelCurrentMP.Text = currentMPDtata.ToString();
                     int totalMPDtata = selectedPlayer.ManaTotal;
                     labeltotalMP.Text = totalMPDtata.ToString();
+                    int playerStrength = selectedPlayer.Strength;
+                    labelDisplaySTR.Text = playerStrength.ToString();
+                    int playerIntel = selectedPlayer.Intellect;
+                    labelDisplayIntel.Text = playerIntel.ToString();
+                    int playerDex = selectedPlayer.Dexterity;
+                    labelDisplayDex.Text = playerDex.ToString();
+                    int playerStamina = selectedPlayer.Stamina;
+                    labelDisplayStam.Text = playerStamina.ToString();
                 }
             }
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            LoadSavedCharacterDataFromCSV("char_data.csv");
+        LoadSavedCharacterDataFromCSV("char_data.csv");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
             this.Close();
             
         }

@@ -21,7 +21,46 @@ namespace DatabaseLearning
         private List<PlayerCharacter> players;
         private List<gameClassData> playerClass;
         private List<gameSaveData> playerSaveData;
+        private Point form2LastLocation;
 
+        public int totalAdjustedSTR;
+        public int totalAdjustedINT;
+        public int totalAdjustedSTAM;
+        public int totalAdjustedDEX;
+        public int totalSP = 15;
+        public int currentSP = 0;
+
+        public int playerHPBASE = 100;
+        public int playerHPCurrent = 100;
+
+        public int playerMPBASE = 100;
+        public int playerMPCurrent = 100;
+
+        public int playerSTRBASE = 10;
+        public int playerSTRCurrent = 10;
+
+        public int playerINTBASE = 10;
+        public int playerINTCurrent = 10;
+
+        public int playerSTAMBASE = 10;
+        public int playerSTAMCurrent = 10;
+
+        public int playerDEXBASE = 10;
+        public int playerDEXCurrent = 10;
+
+        public int totalSTR;
+        public int totalINT;
+        public int totalSTAM;
+        public int totalDEX;
+
+        public string playerName = "";
+
+        public string BonusHPValue;
+        public string BonusMPValue;
+        public string BonusSTRValue;
+        public string BonusINTValue;
+        public string BonusSTAMValue;
+        public string BonusDEXValue;
         public Form1()
         {
             InitializeComponent();
@@ -32,8 +71,35 @@ namespace DatabaseLearning
 
         private void btnLoadCsv_Click(object sender, EventArgs e)
         {
-            Form2 Form2 = new Form2();
-            Form2.ShowDialog();
+            // Check if Form2 is already open
+            Form2 form2 = Application.OpenForms.OfType<Form2>().FirstOrDefault();
+
+            if (form2 == null)
+            {
+                // Form2 is not open, create a new instance
+                form2 = new Form2();
+
+                // Set the owner of Form2 to Form1
+                form2.Owner = this;
+
+                // Store the current location of Form1
+                Point form1Location = this.Location;
+
+                // Calculate the center position based on Form1's location and size
+                int centerX = form1Location.X + (this.Width - form2.Width) / 2;
+                int centerY = form1Location.Y + (this.Height - form2.Height) / 2;
+
+                // Set the location of Form2 to the calculated center position
+                form2.Location = new Point(centerX, centerY);
+
+                // Show Form2
+                form2.Show();
+            }
+            else
+            {
+                // Form2 is already open, bring it to the front
+                form2.BringToFront();
+            }
             /*
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -51,6 +117,11 @@ namespace DatabaseLearning
                     }
                 }
             }*/
+        }
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Save the last location of Form2 when it is closed
+            form2LastLocation = ((Form)sender).Location;
         }
         private void LoadDataFromCSV(string filePath)
         {
@@ -78,7 +149,7 @@ namespace DatabaseLearning
                     }
                 }
 
-                MessageBox.Show($"Loaded {players.Count} records from {Path.GetFileName(filePath)}", "CSV Loaded");
+                //MessageBox.Show($"Loaded {players.Count} records from {Path.GetFileName(filePath)}", "CSV Loaded");
                 DisplayDataInLabel();
             }
             catch (Exception ex)
@@ -122,7 +193,7 @@ namespace DatabaseLearning
                     }
                 }
 
-                MessageBox.Show($"Loaded {playerClass.Count} Classes from {Path.GetFileName(filePath)}", "Class Data Loaded");
+               // MessageBox.Show($"Loaded {playerClass.Count} Classes from {Path.GetFileName(filePath)}", "Class Data Loaded");
                 DisplayDataInClassListBox();
             }
             catch (Exception ex)
@@ -146,6 +217,7 @@ namespace DatabaseLearning
         private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             getClassBonus();
+            getSheetUpdate();
         }
         private void getClassBonus()
         {
@@ -326,7 +398,7 @@ namespace DatabaseLearning
                     }
                 }
 
-                MessageBox.Show($"Loaded {playerSaveData.Count} Characters from {Path.GetFileName(filePath)}", "Character Save Data Loaded");
+                //MessageBox.Show($"Loaded {playerSaveData.Count} Characters from {Path.GetFileName(filePath)}", "Character Save Data Loaded");
                 //DisplayDataInClassListBox();
             }
             catch (Exception ex)
@@ -422,6 +494,168 @@ namespace DatabaseLearning
                 labelDisplayStam.Text,
                 classNameDisplay.Text
               );
+
+        }
+        private void ADDSTR_Click(object sender, EventArgs e)
+        {
+            if (totalSP > 0)
+            {
+                totalSP = totalSP - 1;
+                totalAdjustedSTR = totalAdjustedSTR + 1;
+
+                if (int.TryParse(BonusSTRValue, out int BonusSTRInt))
+                {
+                    totalSTR = playerSTRBASE + BonusSTRInt;
+                    playerSTRCurrent = totalSTR + 1;
+
+                }
+                 getSheetUpdate();
+                labelDisplaySTR.Text = totalAdjustedSTR.ToString();
+
+            }
+            else
+            {
+                MessageBox.Show($"Not enough skill points: {totalSP}");
+            }
+
+        }
+
+        private void ADDINT_Click(object sender, EventArgs e)
+        {
+            if (totalSP > 0)
+            {
+                totalSP = totalSP - 1;
+                totalAdjustedINT = totalAdjustedINT + 1;
+
+                if (int.TryParse(BonusINTValue, out int BonusIntellInt))
+                {
+                    totalINT = playerINTBASE + BonusIntellInt;
+                    playerINTCurrent = totalINT + 1;
+
+                }
+               // getSheetUpdate();
+                //AddINTBox.Text = totalAdjustedINT.ToString();
+
+            }
+            else
+            {
+                MessageBox.Show($"Not enough skill points: {totalSP}");
+            }
+        }
+
+        private void ADDSTAM_Click(object sender, EventArgs e)
+        {
+            if (totalSP > 0)
+            {
+                totalSP = totalSP - 1;
+                totalAdjustedSTAM = totalAdjustedSTAM + 1;
+
+                if (int.TryParse(BonusSTAMValue, out int BonusSTAMInt))
+                {
+                    totalSTAM = playerSTAMBASE + BonusSTAMInt;
+                    playerSTAMCurrent = totalSTAM + 1;
+
+                }
+               //getSheetUpdate();
+               //addSTAMBox.Text = totalAdjustedSTAM.ToString();
+
+            }
+            else
+            {
+                MessageBox.Show($"Not enough skill points: {totalSP}");
+            }
+        }
+        private void REMOVE_Click(object sender, EventArgs e)
+        {
+            resetSKillPoints();
+        }
+        public void resetSKillPoints()
+        {
+            if (totalAdjustedSTR > 0 || totalAdjustedINT > 0 || totalAdjustedSTAM > 0)
+            {
+                totalSP += totalAdjustedSTR + totalAdjustedINT + totalAdjustedSTAM;
+
+                if (int.TryParse(BonusSTRValue, out int BonusSTRInt))
+                {
+                    totalSTR = playerSTRBASE + BonusSTRInt;
+                    playerSTRCurrent = totalSTR - totalAdjustedSTR;
+
+                }
+
+                if (int.TryParse(BonusINTValue, out int BonusIntellInt))
+                {
+                    totalINT = playerINTBASE + BonusIntellInt;
+                    playerINTCurrent = totalINT - totalAdjustedINT;
+
+                }
+
+                if (int.TryParse(BonusSTAMValue, out int BonusSTAMInt))
+                {
+                    totalSTAM = playerSTAMBASE + BonusSTAMInt;
+                    playerSTAMCurrent = totalSTAM - totalAdjustedSTAM;
+
+                }
+                totalAdjustedSTR = 0;
+                totalAdjustedINT = 0;
+                totalAdjustedSTAM = 0;
+
+                labelDisplaySTR.Text = totalAdjustedSTR.ToString();
+               // AddINTBox.Text = totalAdjustedINT.ToString();
+               // addSTAMBox.Text = totalAdjustedSTAM.ToString();
+                getSheetUpdate();
+            }
+            else
+            {
+                MessageBox.Show($"Your Skill Points have already been reset: {totalSP}");
+            }
+        }
+        public void getSheetUpdate()
+        {
+            gameClassData selectedClass = playerClass[classListDisplayBox.SelectedIndex];
+
+           // string BonusHPValue = selectedClass.Bonus HP"].ToString();
+            //string BonusMPValue = selectedClass["Bonus MP"].ToString();
+            string BonusSTRValue = selectedClass.classBonusSTR.ToString();
+            string BonusINTValue = selectedClass.classBonusIntel.ToString();
+            string BonusSTAMValue = selectedClass.classBonusStam.ToString();
+            string BonusDEXValue = selectedClass.classBonusDex.ToString();
+
+            //textBoxName.Text = selectedClass["Name"].ToString();
+            //textBoxBonusHP.Text = BonusHPValue;
+           // textBoxBonusMana.Text = BonusMPValue;
+
+            if (selectedClass != null)
+            {
+                if (int.TryParse(BonusSTRValue, out int BonusSTRInt))
+                {
+                    totalSTR = playerSTRBASE + BonusSTRInt;
+                    playerSTRCurrent = totalSTR + totalAdjustedSTR;
+                    labelDisplaySTR.Text = playerSTRCurrent.ToString();
+                }
+
+                if (int.TryParse(BonusINTValue, out int BonusINTELLInt))
+                {
+                    totalINT = playerINTBASE + BonusINTELLInt;
+                    playerINTCurrent = totalINT + totalAdjustedINT;
+                    labelDisplayIntel.Text = playerINTCurrent.ToString();
+                }
+
+                if (int.TryParse(BonusDEXValue, out int BonusDEXInt))
+                {
+                    totalDEX = playerDEXBASE + BonusDEXInt;
+                    playerDEXCurrent = totalDEX + totalAdjustedDEX;
+                    labelDisplayDex.Text = playerDEXCurrent.ToString();
+                }
+
+                if (int.TryParse(BonusSTAMValue, out int BonusSTAMInt))
+                {
+                    totalSTAM = playerSTAMBASE + BonusSTAMInt;
+                    playerSTAMCurrent = totalSTAM + totalAdjustedSTAM;
+                    labelDisplayStam.Text = playerSTAMCurrent.ToString();
+                }
+
+                labelTotalSkillPoints.Text = totalSP.ToString();
+            }
         }
     }
 }
